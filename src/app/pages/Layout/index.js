@@ -4,7 +4,7 @@ import React, {PropTypes} from 'react'
 import Header from './Header'
 import Footer from './Footer'
 
-export default function App({children}) {
+export default function Layout({children}) {
   return (
     <div>
       <Header/>
@@ -14,6 +14,6 @@ export default function App({children}) {
   )
 }
 
-App.propTypes = {
+Layout.propTypes = {
   children: PropTypes.object.isRequired
 }

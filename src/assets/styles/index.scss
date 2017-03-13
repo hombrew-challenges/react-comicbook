@@ -9,7 +9,14 @@ body {
 @import 'helpers/margin';
 @import 'helpers/padding';
 @import 'helpers/positioning';
-@import 'pages/App';
+
+// pages
 @import 'pages/layout/header';
 @import 'pages/layout/footer';
 @import 'pages/layout/content';
+
+@import 'pages/components/sections';
+
+@import 'pages/characters/page';
+@import 'pages/characters/character-list';
+@import 'pages/characters/favourite-list';
