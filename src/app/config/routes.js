@@ -4,10 +4,8 @@ import {Route, IndexRedirect} from 'react-router'
 // routes
 import * as routes from './constants/routes'
 
-// components
-import Layout from '../pages/Layout'
-
 // views
+import Layout from '../pages/Layout'
 import Characters from '../pages/Characters'
 
 export default (

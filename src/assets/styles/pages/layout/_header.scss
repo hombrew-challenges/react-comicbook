@@ -35,13 +35,16 @@
 
   @media (max-width: 767px) {
     .searchbar {
-      margin: 0 0 0 -15px;
-      padding: 7px 15px;
+      margin: 0 auto;
+      padding: 7px 15px 7px 0;
+      display: block;
+      overflow: hidden;
+      .input-group { width: 100%; }
     }
   }
 
   @media (min-width: 768px) {
-    .container-fluid {
+    .container {
         position: relative;
         .searchbar {
           .form-group {

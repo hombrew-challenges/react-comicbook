@@ -6,7 +6,7 @@ import grabilityLogo from '../../../assets/images/logos/grability-logo.png'
 
 export default function Footer() {
   return (
-    <Navbar className="cb-footer no-margin" inverse fluid>
+    <Navbar className="cb-footer no-margin" inverse>
       <Navbar.Header className="no-margin">
         <Navbar.Brand>
           <span className="absolute-vertical-centered margin-left-50">

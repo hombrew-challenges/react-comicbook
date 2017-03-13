@@ -7,7 +7,7 @@ import searchIcon from '../../../assets/images/icons/search.png'
 
 export default function Header() {
   return (
-    <Navbar className="cb-header" inverse fixedTop fluid>
+    <Navbar className="cb-header" inverse fixedTop>
       <Navbar.Header>
         <Navbar.Brand>
           <a className='margin-right-15' href="#"><img src={marvelLogo} alt="marvel logo"/></a>
