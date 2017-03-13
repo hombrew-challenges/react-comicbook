@@ -1,0 +1,26 @@
+.cb-footer {
+  background-color: $dark-grey;
+  .navbar-header {
+    width: 100%;
+    position: relative;
+  }
+  .navbar-brand {
+    color: #fff;
+    font-size: .8em;
+    font-weight: normal;
+  }
+  .grability-logo-wrapper {
+    img { width: 40px; }
+  }
+
+  @media (max-width: 767px) {
+    .navbar-brand {
+      margin-left: 0!important;
+        padding-left: 0;
+    }
+    .grability-logo-wrapper {
+      margin-right: 0!important;
+      img { margin-right: 0!important; }
+    }
+  }
+}

@@ -5,4 +5,11 @@ body {
   font-family: sans-serif;
 }
 
-@import 'components/App';
+@import 'helpers/variables';
+@import 'helpers/margin';
+@import 'helpers/padding';
+@import 'helpers/positioning';
+@import 'pages/App';
+@import 'pages/layout/header';
+@import 'pages/layout/footer';
+@import 'pages/layout/content';
