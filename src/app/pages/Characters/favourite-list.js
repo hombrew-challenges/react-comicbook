@@ -20,7 +20,7 @@ export default class FavouriteList extends Component {
         </Row>
         {[0, 1, 2 ,3].map((e) => {
           return (
-            <Row>
+            <Row key={e}>
               <Col className="margin-bottom-10 text-center" key={e} xs={12}>
                 <ComicBook img={spidermanComicbook} label={'Amazing Spiderman - 316'}/>
               </Col>

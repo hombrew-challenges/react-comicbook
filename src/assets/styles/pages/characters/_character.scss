@@ -27,6 +27,8 @@
         white-space: nowrap;
         text-transform: uppercase;
         height: 15%;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
       .content {
         overflow: hidden;
