@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react'
 
 export function SectionTitle({img, label}) {
   return (
-    <div className="section-title margin-bottom-20">
+    <div className="section-title">
       <img className="margin-right-15" src={img} alt={label}/>
       <label>{label}</label>
     </div>
