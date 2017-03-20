@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import {Row, Col} from 'react-bootstrap'
 
 // components
-import {SectionTitle} from '../Components/sections'
-import ComicBook from '../Components/comicbook'
+import {SectionTitle} from '../components/sections'
+import ComicBook from '../components/comicbook'
 
 // img
 import favouritesIcon from '../../../assets/images/icons/favourites.png'
@@ -21,7 +21,7 @@ export default class FavouriteList extends Component {
         {[0, 1, 2 ,3].map((e) => {
           return (
             <Row key={e}>
-              <Col className="margin-bottom-10 text-center" key={e} xs={12}>
+              <Col className="margin-bottom-10 text-center" xs={12}>
                 <ComicBook img={spidermanComicbook} label={'Amazing Spiderman - 316'}/>
               </Col>
             </Row>

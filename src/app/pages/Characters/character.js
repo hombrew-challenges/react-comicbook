@@ -1,7 +1,7 @@
 import React from 'react'
 import {Row, Col, Button} from 'react-bootstrap'
 
-export default function Character({name, description = 'No description.', thumbnail, comics}) {
+export default function Character({name, description = 'No description.', thumbnail, comics, onClick}) {
   description = description.trim() === '' ? 'No description.' : description
   const avatar = `${thumbnail.path}.${thumbnail.extension}`
   if (comics.items.length === 0) comics.items.push({name: 'No related comics.'})
@@ -24,7 +24,7 @@ export default function Character({name, description = 'No description.', thumbn
                 <div className="content padding-bottom-10">
                   {description}
                 </div>
-                <Button bsStyle="danger" className="margin-left-10">View more</Button>
+                <Button bsStyle="danger" className="margin-left-10" onClick={onClick}>View more</Button>
               </div>
             </Col>
           </Row>

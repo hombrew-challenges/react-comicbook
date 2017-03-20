@@ -10,6 +10,8 @@ export const CHARACTERS_LOADED = 'CHARACTERS_LOADED'
 export const charactersLoaded = createAction(CHARACTERS_LOADED)
 export const CHARACTERS_LOADING_ERROR = 'CHARACTERS_LOADING_ERROR'
 export const charactersLoadingError = createAction(CHARACTERS_LOADING_ERROR)
+export const CHARACTERS_FILTER = 'CHARACTERS_FILTER'
+export const charactersFilter = createAction(CHARACTERS_FILTER)
 
 export function getCharacters(params = {}) {
   return (dispatch, getState) => {
@@ -17,7 +19,7 @@ export function getCharacters(params = {}) {
     if (!characters.areLoading) {
       params = {...params, limit: CHARACTERS_PER_PAGE}
       dispatch(showLoading())
-      dispatch(charactersAreLoading(params))
+      dispatch(charactersAreLoading())
       api
         .get(API_CHARACTERS, {params})
         .then(response => {

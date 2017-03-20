@@ -2,14 +2,14 @@ import React from 'react'
 import {Row, Col} from 'react-bootstrap'
 
 // components
-import {SectionTitle} from '../Components/sections'
+import {SectionTitle} from '../components/sections'
 import Character from './character'
-import Paginator from '../Components/paginator'
+import Paginator from '../components/paginator'
 
 // img
 import charactersIcon from '../../../assets/images/icons/characters.png'
 
-export default function CharacterList({areLoading, areCached, data, getNewPage}) {
+export default function CharacterList({areLoading, areCached, data, getNewPage, getCharacterProfile}) {
   const {results: characters, total, limit, offset} = data
   return (
     <div>
@@ -21,14 +21,14 @@ export default function CharacterList({areLoading, areCached, data, getNewPage})
       <Row>
         {(areCached) && (characters.length === 0 ? (
           <div>
-            <h4 className="no-character">Your search didn't match any character.</h4>
+            <h4 className="no-results">Your search didn't match any character.</h4>
           </div>
         ) : (
           <div>
             {characters.map((character) => {
               return (
                 <Col className="margin-bottom-30" key={character.id} xs={12} sm={6}>
-                  <Character {...character}/>
+                  <Character {...character} onClick={() => getCharacterProfile(character.id)}/>
                 </Col>
               )
             })}

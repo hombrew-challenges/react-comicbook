@@ -8,7 +8,8 @@ import CharacterList from './character-list'
 import FavouriteList from './favourite-list'
 
 // actions
-import {getCharacters} from '../../actions/characters'
+import {getCharacters, charactersFilter} from '../../actions/characters'
+import {getCharacterProfile} from '../../actions/character-profile'
 
 class Characters extends Component {
 
@@ -18,13 +19,16 @@ class Characters extends Component {
   }
 
   componentWillMount() {
-    this.props.getCharacters()
+    if (!this.props.characters.areCached) {
+      this.props.getCharacters()
+    }
   }
 
   getNewPage(page, limit) {
     const offset = (page - 1) * limit
-    const {nameStartsWith} = this.props.characters.params
-    this.props.getCharacters({offset, nameStartsWith})
+    let nameStartsWith = this.props.characters.filters.word
+    nameStartsWith = nameStartsWith === '' ? {} : {nameStartsWith}
+    this.props.getCharacters({offset, ...nameStartsWith})
   }
 
   render() {
@@ -33,7 +37,10 @@ class Characters extends Component {
         <Grid>
           <Row>
             <Col className="character-list padding-20" xs={12} md={8}>
-              <CharacterList getNewPage={this.getNewPage} {...this.props.characters}/>
+              <CharacterList
+                getNewPage={this.getNewPage}
+                getCharacterProfile={this.props.getCharacterProfile}
+                {...this.props.characters}/>
             </Col>
             <Col className="favourite-list padding-20 hidden-xs hidden-sm" md={4}>
               <FavouriteList/>
@@ -50,7 +57,7 @@ function mapStateToProps({characters}) {
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({getCharacters}, dispatch)
+    return bindActionCreators({getCharacters, getCharacterProfile, charactersFilter}, dispatch)
 }
 
 export default connect(
