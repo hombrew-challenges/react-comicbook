@@ -3,6 +3,16 @@
   background-color: $content-grey;
 }
 
+// all modals background
+.modal-open {
+  #root {
+    filter: blur(20px);
+  }
+  .modal-backdrop.in {
+    opacity: .6;
+  }
+}
+
 .no-results {
   color: $dark-grey;
 }

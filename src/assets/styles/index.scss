@@ -20,7 +20,9 @@ body {
 @import 'pages/components/sections';
 @import 'pages/components/comicbook';
 
+// pages
 @import 'pages/characters/page';
 @import 'pages/characters/character-list';
 @import 'pages/characters/character';
 @import 'pages/characters/favourite-list';
+@import 'pages/character-profile/add-to-favourites-modal';

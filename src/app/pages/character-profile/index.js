@@ -7,6 +7,7 @@ import {Grid, Row, Col} from 'react-bootstrap'
 import {SectionTitle} from '../components/sections'
 import ComicBook from '../components/comicbook'
 import Paginator from '../components/paginator'
+import AddToFavouritesModal from './add-to-favourites-modal'
 
 // actions
 import {getCharacterProfile, getCharacterComics} from '../../actions/character-profile'
@@ -16,6 +17,8 @@ import charactersIcon from '../../../assets/images/icons/characters.png'
 import favouritesIcon from '../../../assets/images/icons/favourites.png'
 
 class CharacterProfile extends Component {
+
+  state = {showModal: false, modalContent: {}}
 
   componentWillMount() {
     if (this.props.characterProfile.data === null) {
@@ -30,8 +33,16 @@ class CharacterProfile extends Component {
     this.props.getCharacterComics(id, {offset, ...nameStartsWith})
   }
 
+  close() {
+    this.setState({ showModal: false })
+  }
+
+  open(id, title, description, img) {
+    
+    this.setState({ showModal: true, modalContent: {id, title, description, img} })
+  }
+
   render() {
-    console.log('character profile index', this.props.characterProfile)
     const {isCached, comics, data: character} = this.props.characterProfile
     let name = 'Character Profile'
     if (isCached && character) {
@@ -65,12 +76,12 @@ class CharacterProfile extends Component {
                   </div>
                 ) : (
                   <div>
-                    {characterComics.map(c => {
-                      const {id, title} = c
-                      const thumbnail = `${c.thumbnail.path}.${c.thumbnail.extension}`
+                    {characterComics.map(comic => {
+                      const {id, title, description} = comic
+                      const thumbnail = `${comic.thumbnail.path}.${comic.thumbnail.extension}`
                       return (
                         <Col className="margin-bottom-10 text-center" key={id} md={4} xs={12}>
-                          <ComicBook img={thumbnail} label={title}/>
+                          <ComicBook img={thumbnail} label={title} onClick={() => this.open(id, title, description, thumbnail)}/>
                         </Col>
                       )
                     })}
@@ -88,6 +99,10 @@ class CharacterProfile extends Component {
             </div>
           )}
         </Grid>
+        <AddToFavouritesModal
+          show={this.state.showModal}
+          onHide={this.close.bind(this)}
+          {...this.state.modalContent}/>
       </div>
     )
   }

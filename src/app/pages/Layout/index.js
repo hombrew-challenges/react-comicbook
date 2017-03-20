@@ -5,7 +5,6 @@ import Header from './header'
 import Footer from './footer'
 
 export default function Layout({children, ...props}) {
-  console.log('all props', props)
   return (
     <div>
       <Header params={props.params}/>

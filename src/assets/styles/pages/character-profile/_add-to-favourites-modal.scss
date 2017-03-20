@@ -1,0 +1,62 @@
+.add-to-favourites-modal {
+  .modal-content {
+    border-radius: 0;
+    .modal-header {
+      border-bottom: 0;
+      padding-bottom: 0;
+      .close {
+        background-color: black;
+        color: white;
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+        position: relative;
+        span {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+    }
+    .modal-body {
+      overflow: hidden;
+      color: $dark-grey;
+      img {
+        width: 100%;
+      }
+      .title {
+        color: $dark-grey;
+        font-size: 1.9em;
+        text-transform: uppercase;
+        font-weight: 700;
+      }
+      .description {
+        color: $dark-grey;
+        line-height: 1.7em;
+        font-size: 1.1em;
+      }
+    }
+    .modal-footer {
+      border-top: 0;
+      button {
+        border: 0;
+        border-radius: 0px;
+        color: $button-red;
+        font-size: 1.3em;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+      .add {
+        background-color: $content-grey;
+        color: $dark-grey;
+      }
+      .added {
+        background-color: $dark-grey;
+      }
+      .buy {
+        background-color: $modal-button-grey;
+      }
+    }
+  }
+}
