@@ -3,12 +3,18 @@
     height: 440px;
     display: inline-block;
     cursor: pointer;
-    img {
+    position: relative;
+    .cover {
         width: 100%;
         height: auto;
     }
     label {
         font-size: 1.3em;
         color: $dark-grey;
+    }
+    .delete-button {
+      position: absolute;
+      top: -15px;
+      right: -15px;
     }
 }

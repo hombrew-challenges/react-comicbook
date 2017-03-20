@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, {Component, PropTypes} from 'react'
 import {Row, Col} from 'react-bootstrap'
 
 // components
@@ -7,7 +7,9 @@ import ComicBook from '../components/comicbook'
 
 // img
 import favouritesIcon from '../../../assets/images/icons/favourites.png'
-import spidermanComicbook from '../../../assets/images/comics/amazing-spider-man-316.jpg'
+
+// constants
+import {MY_FAVOURITES} from '../../config/constants/routes'
 
 export default class FavouriteList extends Component {
   render() {
@@ -18,11 +20,16 @@ export default class FavouriteList extends Component {
             <SectionTitle img={favouritesIcon} label="My favourites"/>
           </Col>
         </Row>
-        {[0, 1, 2 ,3].map((e) => {
+        {this.props.favourites.filter((f, i) => i < 4).map((f) => {
           return (
-            <Row key={e}>
+            <Row key={f.id}>
               <Col className="margin-bottom-10 text-center" xs={12}>
-                <ComicBook img={spidermanComicbook} label={'Amazing Spiderman - 316'}/>
+                <ComicBook
+                  id={f.id}
+                  img={f.img}
+                  label={f.title}
+                  onClick={() => this.props.goTo(MY_FAVOURITES)}
+                  onRemove={this.props.favouritesRemove}/>
               </Col>
             </Row>
           )
@@ -30,4 +37,10 @@ export default class FavouriteList extends Component {
       </div>
     )
   }
+}
+
+
+FavouriteList.propTypes = {
+  favourites: PropTypes.array.isRequired,
+  favouritesRemove: PropTypes.func.isRequired
 }

@@ -10,6 +10,8 @@ import FavouriteList from './favourite-list'
 // actions
 import {getCharacters, charactersFilter} from '../../actions/characters'
 import {getCharacterProfile} from '../../actions/character-profile'
+import {favouritesRemove} from '../../actions/favourites'
+import {goTo} from '../../actions/helpers'
 
 class Characters extends Component {
 
@@ -43,7 +45,10 @@ class Characters extends Component {
                 {...this.props.characters}/>
             </Col>
             <Col className="favourite-list padding-20 hidden-xs hidden-sm" md={4}>
-              <FavouriteList/>
+              <FavouriteList
+                goTo={this.props.goTo}
+                favourites={this.props.favourites.data}
+                favouritesRemove={this.props.favouritesRemove}/>
             </Col>
           </Row>
         </Grid>
@@ -52,12 +57,14 @@ class Characters extends Component {
   }
 }
 
-function mapStateToProps({characters}) {
-    return {characters}
+function mapStateToProps({characters, favourites}) {
+  return {characters, favourites}
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({getCharacters, getCharacterProfile, charactersFilter}, dispatch)
+  return bindActionCreators({
+    getCharacters, getCharacterProfile, charactersFilter, favouritesRemove, goTo
+  }, dispatch)
 }
 
 export default connect(

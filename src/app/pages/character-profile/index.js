@@ -11,6 +11,7 @@ import AddToFavouritesModal from './add-to-favourites-modal'
 
 // actions
 import {getCharacterProfile, getCharacterComics} from '../../actions/character-profile'
+import {favouritesAdd} from '../../actions/favourites'
 
 // img
 import charactersIcon from '../../../assets/images/icons/characters.png'
@@ -81,7 +82,10 @@ class CharacterProfile extends Component {
                       const thumbnail = `${comic.thumbnail.path}.${comic.thumbnail.extension}`
                       return (
                         <Col className="margin-bottom-10 text-center" key={id} md={4} xs={12}>
-                          <ComicBook img={thumbnail} label={title} onClick={() => this.open(id, title, description, thumbnail)}/>
+                          <ComicBook
+                            img={thumbnail}
+                            label={title}
+                            onClick={() => this.open(id, title, description, thumbnail)}/>
                         </Col>
                       )
                     })}
@@ -102,18 +106,20 @@ class CharacterProfile extends Component {
         <AddToFavouritesModal
           show={this.state.showModal}
           onHide={this.close.bind(this)}
+          onAdd={this.props.favouritesAdd}
+          list={this.props.favourites.data}
           {...this.state.modalContent}/>
       </div>
     )
   }
 }
 
-function mapStateToProps({characterProfile}) {
-    return {characterProfile, getCharacterComics}
+function mapStateToProps({characterProfile, favourites}) {
+    return {characterProfile, favourites}
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({getCharacterProfile, getCharacterComics}, dispatch)
+    return bindActionCreators({getCharacterProfile, getCharacterComics, favouritesAdd}, dispatch)
 }
 
 export default connect(
