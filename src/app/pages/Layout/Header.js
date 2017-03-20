@@ -1,7 +1,10 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import LoadingBar from 'react-redux-loading-bar'
 import {Navbar, FormGroup, InputGroup, FormControl, Button} from 'react-bootstrap'
+import {Link} from 'react-router'
+import {CHARACTERS} from '../../config/constants/routes'
 
 // actions
 import {getCharacters} from '../../actions/characters'
@@ -14,7 +17,8 @@ class Header extends Component {
 
   handleSubmit(e) {
     e.preventDefault()
-    this.props.getCharacters({nameStartsWith: this.input.value})
+    const search = this.input.value === '' ? {} : {nameStartsWith: this.input.value}
+    this.props.getCharacters(search)
   }
 
   render() {
@@ -22,7 +26,9 @@ class Header extends Component {
       <Navbar className="cb-header" inverse fixedTop>
         <Navbar.Header>
           <Navbar.Brand>
-            <a className='margin-right-15' href="#"><img src={marvelLogo} alt="marvel logo"/></a>
+            <Link className='margin-right-15' to={CHARACTERS}>
+              <img src={marvelLogo} alt="marvel logo"/>
+            </Link>
           </Navbar.Brand>
           <Navbar.Form className="searchbar">
             <form onSubmit={this.handleSubmit.bind(this)}>
@@ -31,7 +37,7 @@ class Header extends Component {
                   <FormControl
                     disabled={this.props.characters.areLoading}
                     inputRef={ref => this.input = ref}
-                    placeholder="Search character..."
+                    placeholder="Search a character..."
                     type="text"/>
                   <InputGroup.Button>
                     <Button
@@ -47,6 +53,7 @@ class Header extends Component {
             </form>
           </Navbar.Form>
         </Navbar.Header>
+        <LoadingBar className="loading-bar"/>
       </Navbar>
     )
   }

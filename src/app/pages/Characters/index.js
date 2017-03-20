@@ -12,8 +12,19 @@ import {getCharacters} from '../../actions/characters'
 
 class Characters extends Component {
 
+  constructor(props) {
+    super(props)
+    this.getNewPage = this.getNewPage.bind(this)
+  }
+
   componentWillMount() {
     this.props.getCharacters()
+  }
+
+  getNewPage(page, limit) {
+    const offset = (page - 1) * limit
+    const {nameStartsWith} = this.props.characters.params
+    this.props.getCharacters({offset, nameStartsWith})
   }
 
   render() {
@@ -22,7 +33,7 @@ class Characters extends Component {
         <Grid>
           <Row>
             <Col className="character-list padding-20" xs={12} md={8}>
-              <CharacterList {...this.props.characters}/>
+              <CharacterList getNewPage={this.getNewPage} {...this.props.characters}/>
             </Col>
             <Col className="favourite-list padding-20 hidden-xs hidden-sm" md={4}>
               <FavouriteList/>

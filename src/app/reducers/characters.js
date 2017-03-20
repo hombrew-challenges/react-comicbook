@@ -5,11 +5,11 @@ import {
   CHARACTERS_LOADING_ERROR
 } from '../actions/characters'
 
-let initialState = {areCached: false, areLoading: false, data: {}}
+let initialState = {areCached: false, areLoading: false, params: {}, data: {}}
 
 let actionMap = {}
 
-actionMap[CHARACTERS_ARE_LOADING] = state => ({...state, areLoading: true})
+actionMap[CHARACTERS_ARE_LOADING] = (state, action) => ({...state, params: action.payload, areLoading: true})
 actionMap[CHARACTERS_LOADED] = (state, action) => ({...state, areCached: true, areLoading: false, data: action.payload})
 actionMap[CHARACTERS_LOADING_ERROR] = state => ({...state, areLoading: false})
 

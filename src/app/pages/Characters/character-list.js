@@ -4,12 +4,13 @@ import {Row, Col} from 'react-bootstrap'
 // components
 import {SectionTitle} from '../Components/sections'
 import Character from './character'
+import Paginator from '../Components/paginator'
 
 // img
 import charactersIcon from '../../../assets/images/icons/characters.png'
 
-export default function CharacterList({areLoading, areCached, data}) {
-  const {results: characters} = data
+export default function CharacterList({areLoading, areCached, data, getNewPage}) {
+  const {results: characters, total, limit, offset} = data
   return (
     <div>
       <Row>
@@ -18,7 +19,7 @@ export default function CharacterList({areLoading, areCached, data}) {
         </Col>
       </Row>
       <Row>
-        {(areCached && !areLoading) && (characters.length === 0 ? (
+        {(areCached) && (characters.length === 0 ? (
           <div>
             <h4 className="no-character">Your search didn't match any character.</h4>
           </div>
@@ -31,9 +32,17 @@ export default function CharacterList({areLoading, areCached, data}) {
                 </Col>
               )
             })}
+            <Col className="text-center" xs={12}>
+              <Paginator
+                total={total}
+                limit={limit}
+                offset={offset}
+                onSelect={(page) => getNewPage(page, limit)}/>
+            </Col>
           </div>
         ))}
       </Row>
     </div>
   )
 }
+

@@ -8,7 +8,9 @@ export default function Layout({children}) {
   return (
     <div>
       <Header/>
-      <div className="cb-content margin-top-50">{children}</div>
+      <div className="cb-content margin-top-50">
+        {children}
+      </div>
       <Footer/>
     </div>
   )
