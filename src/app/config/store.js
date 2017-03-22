@@ -1,5 +1,8 @@
 import {createStore, applyMiddleware} from 'redux'
 
+// subscriptions
+import subscriptions from './subsciptions'
+
 // middlewares
 import {routerMiddleware} from 'react-router-redux'
 import thunk from 'redux-thunk'
@@ -13,5 +16,9 @@ export default function (initialState) {
     thunk,
     routerMiddleware(browserHistory)
   )(createStore)
-  return createStoreWithMiddleware(rootReducer, initialState)
+  const store = createStoreWithMiddleware(rootReducer, initialState)
+
+  subscriptions(store)
+
+  return store
 }

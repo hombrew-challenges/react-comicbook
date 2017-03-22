@@ -13,6 +13,7 @@ import routes from './app/config/routes'
 
 // styles
 import 'bootstrap/dist/css/bootstrap.css'
+import 'react-redux-toastr/lib/css/react-redux-toastr.css'
 import './assets/styles/index.css'
 
 const store = configureStore()

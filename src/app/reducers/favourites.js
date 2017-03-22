@@ -8,7 +8,7 @@ const keyword = 'cb-favourites'
 const favourites = localStorage.getItem(keyword)
 const data = favourites ? JSON.parse(favourites) : []
 
-let initialState = {data, filters: {word: ''}}
+export let initialState = {data, filters: {word: ''}}
 
 let actionMap = {}
 

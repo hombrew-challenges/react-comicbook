@@ -1,13 +1,15 @@
 import {combineReducers} from 'redux'
-import {routerReducer} from 'react-router-redux'
-import {loadingBarReducer} from 'react-redux-loading-bar'
+import {routerReducer as routing} from 'react-router-redux'
+import {loadingBarReducer as loadingBar} from 'react-redux-loading-bar'
+import {reducer as toastr} from 'react-redux-toastr'
 import characters from './characters'
 import characterProfile from './character-profile'
 import favourites from './favourites'
 
 const rootReducer = combineReducers({
-  routing: routerReducer,
-  loadingBar: loadingBarReducer,
+  routing,
+  loadingBar,
+  toastr,
   characters,
   characterProfile,
   favourites

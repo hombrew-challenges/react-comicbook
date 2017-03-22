@@ -45,7 +45,13 @@ export default class AddToFavouritesModal extends Component {
                 <img className="margin-right-10" src={addedToFavourites} alt="added comics"/>Added to Favourites
               </Button>
             ) : (
-              <Button block className="padding-30 add" onClick={() => this.props.onAdd(favourite)}>
+              <Button
+                block
+                className="padding-30 add"
+                onClick={() => {
+                  this.props.onAdd(favourite)
+                  this.props.onHide()
+                }}>
                 <img className="margin-right-10" src={addToFavourites} alt="added comics"/>Add to Favourites
               </Button>
             )}
